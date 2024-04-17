@@ -1,0 +1,83 @@
+﻿@model TrainingFPTCo.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<style>
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+    }
+
+    .login-form {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        width: 400px;
+    }
+
+        .login-form h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-form img {
+            display: block;
+            margin: 0 auto 20px;
+            width: 150px; /* Điều chỉnh kích thước logo tại đây */
+            height: auto;
+        }
+
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .login-form button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+            .login-form button:hover {
+                background-color: #0056b3;
+            }
+</style>
+
+<div class="login-container">
+    <div class="login-form">
+        <img src="https://fap.fpi.edu.vn/images/NewPage/Sidebar/btec.svg" alt="Btec Logo">
+        <h1>Login FPT Training</h1>
+        <p class="text-medium-emphasis">Sign in to your account</p>
+
+        @if (ViewData["MessageLogin"] != null)
+        {
+            <p class="text-danger text-center">
+                @ViewData["MessageLogin"]
+            </p>
+        }
+
+        @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+        {
+            <input type="text" name="UserName" placeholder="Username">
+            <input type="password" name="Password" placeholder="Password">
+            <button type="submit">Login</button>
+        }
+    </div>
+</div>
